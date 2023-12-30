@@ -112,8 +112,7 @@ const parseInput = (text, svg) => {
     const nodeLevel = {};
     let totalLevels = 0;
     const lines = text.split(/\r?\n/);
-    // console.log("PRASAD");
-    // console.log(lines);
+
     for (let line of lines) {
         const words = line.split(" ");
         const arr = [];
@@ -144,7 +143,7 @@ const parseInput = (text, svg) => {
 
     let index = 0;
     for (let node in graph) {
-        // console.log("Prasad");
+
         // console.log(node);
         if (!nodeLevel.hasOwnProperty(node)) {
             nodeLevel[node] = 1;
@@ -207,11 +206,9 @@ const visit = (svg, graph, level, nodeLevel, location, taken, start, parent = -1
             if (!taken.hasOwnProperty(edge) && !taken.hasOwnProperty(backEdge)) {
                 const delta = Math.abs(location[neb][0] - location[node][0]);
                 if (nodeLevel[node] === nodeLevel[neb] && delta > threshold) {
-                    // console.log("CURVE");
                     // console.log(location);
                     drawCurve(svg, location[node][0], location[node][1], location[node][0], location[node][1] + threshold / 2, location[neb][0], location[neb][1] + threshold / 2, location[neb][0], location[neb][1]);
                 } else {
-                    // console.log("NOT CURVE");
                     // console.log(location);
                     drawEdge(svg, location[node][0], location[node][1], location[neb][0], location[neb][1]);
                 }
